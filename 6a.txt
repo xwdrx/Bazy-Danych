@@ -2,16 +2,19 @@
 _________________________
 zaleznosci funkcyjne:
 
-suma_netto,VAT -> summa_brutto 
-suma_netto, suma_brutto -> vat 
+suma_brutto -> suma_netto,VAT 
+vat -> suma_netto, suma_brutto
 
-suma_netto, ilosc, vat -> cena_produktu
+cena_produktu-> suma_netto, ilosc, vat
 
-cena_produktu, ilosc, vat -> suma_netto
-cena_produktu, nazwa_produktu, ilosc -> suma_brutto
+suma_netto -> cena_produktu, ilosc, vat
+suma_brutto -> cena_produktu, nazwa_produktu, ilosc, vat 
+
+data_zamowienia -> id_klienta, nazwa_klienta,nazwe_produktu, data_zamowienia, cena_produktu, ilosc, vat, suma_netto, suma_brutto
+data_zamowienia -> id_klienta, nazwe_klienta, nazwa_produktu
 
 id_produktu -> nazwa_produktu, cena_produktu, Vat
-id_produktu, nazwa_produktu, cena_produktu -> vat
+vat -> id_produktu, nazwa_produktu, cena_produktu 
 
 id_klienta ->nazwa_klienta
 id_zamowienia -> nazwa_zamowienia
@@ -19,24 +22,23 @@ _______________________________________________________
 
 2.klucze kandydujace:
 
-a) id_klienta, id_produktu, data_zamowienia
-b) nazwa_klienta, nazwa_produktu, data_zamowienia
-c) id_klienta, nazwa_produktu, data_zamowienia
-d) nazwa_klienta, id_produktu, data_zamowienia
+a) {id_klienta, id_produktu, data_zamowienia}
+b) {nazwa_klienta, nazwa_produktu, data_zamowienia}
+c) {id_klienta, nazwa_produktu, data_zamowienia}
+d) {nazwa_klienta, id_produktu, data_zamowienia}
 _______________________________________________________
 
 3.zaleznosci funkcyjne dla tabeli pomieszczenia(id_pomieszczenia, numer_pomieszczenia, id_budynku, powierzchnia, liczba_okien, liczba_drzwi, ulica, miasto, kod_pocztowy)
 
 id_budynku, id_pomieszczenia -> numer_pomieszczenia, powierzchnia, liczba_drzwi, liczba_okien
 id_budynku -> ulica, miasto, kod_pocztowy
-kod_pocztowy -> miasto
+kod_pocztowy -> miasto 
 miasto -> kod_pocztowy
 id_pomieszczenia ->numer_pomieszczenia,powierzchnia, liczba_drzwi, liczba_okien
 numer_pomieszczenia -> powierzchnia, liczba_drzwi, liczba_okien
 _____________________
 klucze kandydujace:
-a) id_budynku, id_pomieszczenia
-b) id_budynku, id_pomieszczenia, numer_pomieszczenia
-c) id_pomieszczenia, numer_pomieszczenia
-
+ {id_budynku, id_pomieszczenia}
+ {id_budynku, id_pomieszczenia, numer_pomieszczenia}
+ {id_pomieszczenia, numer_pomieszczenia}
 
